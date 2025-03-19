@@ -1,17 +1,18 @@
-import '@/styles/globals.css';
-import { Metadata } from 'next';
-import { siteConfig } from '@/config/site';
+import "@/styles/globals.css";
+
+import { type Metadata } from "next";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
-  keywords: ['Markdown'],
+  keywords: ["Markdown"],
   authors: {
-    name: 'kamiya',
+    name: "kamiya",
   },
   openGraph: {
-    type: 'website',
-    locale: 'ja',
+    type: "website",
+    locale: "ja",
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
@@ -24,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body>{children}</body>
     </html>
   );
