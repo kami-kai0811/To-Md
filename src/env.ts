@@ -12,8 +12,8 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
 
-    SUPABASE_STORAGE_URL: z.string().url(),
-    SUPABASE_SERVICE_ROLE_KEY: z.string(),
+    SUPABASE_STORAGE_URL: z.string().url().optional(),
+    SUPABASE_SERVICE_ROLE_KEY: z.string().optional(),
   },
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
