@@ -1,24 +1,44 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
-  "editor.rulers": [200],
-  "editor.tabSize": 2,
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "deno.enablePaths": ["supabase/functions"],
+  "deno.lint": true,
+  "deno.unstable": [
+    "bare-node-builtins",
+    "byonm",
+    "sloppy-imports",
+    "unsafe-proto",
+    "webgpu",
+    "broadcast-channel",
+    "worker-options",
+    "cron",
+    "kv",
+    "ffi",
+    "fs",
+    "http",
+    "net"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.quickSuggestions": {
     "comments": false
   },
-  "editor.wordWrap": "off",
   "editor.renderControlCharacters": true,
+  "editor.rulers": [200],
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
   "eslint.runtime": "node",
   "prettier.ignorePath": "gitignore",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
   "search.exclude": {
     "**/node_modules": true
-  }
+  },
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
