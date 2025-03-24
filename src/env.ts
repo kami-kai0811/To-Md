@@ -6,6 +6,10 @@ export const env = createEnv({
     /**
      * 環境
      */
+    NODE_ENV: z
+      .enum(["development", "test", "production"])
+      .default("development"),
+
     SUPABASE_STORAGE_URL: z.string().url(),
     SUPABASE_SERVICE_ROLE_KEY: z.string(),
     SUPABASE_ANON_KEY: z.string(),
@@ -15,6 +19,7 @@ export const env = createEnv({
   },
   runtimeEnv: {
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    NODE_ENV: process.env.NODE_ENV,
     SUPABASE_STORAGE_URL: process.env.SUPABASE_STORAGE_URL,
     SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
