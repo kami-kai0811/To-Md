@@ -1,0 +1,9 @@
+import { CsrEditor } from "@/components/editor-csr";
+
+export default function Home() {
+  return (
+    <main className="container mx-auto text-center">
+      <CsrEditor />
+    </main>
+  );
+}
