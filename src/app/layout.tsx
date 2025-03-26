@@ -32,13 +32,13 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={cn(fontNotoSansJP.className, "pb-40")}>
-        <header className="bg-foreground py-5">
+        <header className="bg-foreground fixed top-0 right-0 left-0 z-30 py-5">
           <div className="mx-auto flex max-w-10/12 justify-between">
             <Logo className={"text-5xl text-white"} />
             <PostMedia />
           </div>
         </header>
-        {children}
+        <div className="mt-24">{children}</div>
         <Toaster />
       </body>
     </html>

@@ -1,6 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { MarkdownProvider } from "@/context/markdown-context";
+import { UrlProvider } from "@/context/url-context";
 
 const Editor = dynamic(() => import("./editor").then((mod) => mod.Editor), {
   loading: () => {
@@ -15,5 +17,11 @@ const Editor = dynamic(() => import("./editor").then((mod) => mod.Editor), {
 });
 
 export function CsrEditor() {
-  return <Editor />;
+  return (
+    <UrlProvider>
+      <MarkdownProvider>
+        <Editor />
+      </MarkdownProvider>
+    </UrlProvider>
+  );
 }

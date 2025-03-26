@@ -28,3 +28,7 @@ export async function POST() {
     return NextResponse.json({ error }, { status: 500 });
   }
 }
+
+export async function GET() {
+  return await POST();
+}

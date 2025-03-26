@@ -9,6 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { postMedia } from "@/config/post-media";
+import { ChevronDown } from "lucide-react";
 
 export function PostMedia() {
   return (
@@ -18,7 +19,7 @@ export function PostMedia() {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="cursor-pointer">
-                投稿メディア
+                <ChevronDown />
               </NavigationMenuTrigger>
               <NavigationMenuContent className="">
                 {postMedia.map((navItem, index) => {
@@ -27,8 +28,6 @@ export function PostMedia() {
                       key={index}
                       href={navItem.href}
                       className={"px-16 font-bold"}
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
                       {navItem.name}
                     </NavigationMenuLink>
