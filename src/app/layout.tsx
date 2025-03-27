@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Logo } from "@/components/logo";
-import { PostMedia } from "@/components/post-media";
+import { Logo } from "@/components/header/logo";
+import { PostMedia } from "@/components/header/post-media";
 import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/config/site";
 import { fontNotoSansJP } from "@/fonts";
@@ -32,14 +32,14 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={cn(fontNotoSansJP.className, "pb-40")}>
-        <header className="bg-foreground py-5">
+        <header className="bg-foreground fixed top-0 right-0 left-0 z-30 py-5">
           <div className="mx-auto flex max-w-10/12 justify-between">
             <Logo className={"text-5xl text-white"} />
             <PostMedia />
           </div>
         </header>
-        {children}
-        <Toaster />
+        <div className="mt-24">{children}</div>
+        <Toaster className="absolute bottom-3 left-3" />
       </body>
     </html>
   );

@@ -27,6 +27,8 @@ export function PostMedia() {
                       key={index}
                       href={navItem.href}
                       className={"px-16 font-bold"}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {navItem.name}
                     </NavigationMenuLink>
