@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Logo } from "@/components/logo";
-import { PostMedia } from "@/components/post-media";
+import { Logo } from "@/components/header/logo";
+import { PostMedia } from "@/components/header/post-media";
 import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/config/site";
 import { fontNotoSansJP } from "@/fonts";
@@ -39,7 +39,7 @@ export default function RootLayout({
           </div>
         </header>
         <div className="mt-24">{children}</div>
-        <Toaster />
+        <Toaster className="absolute bottom-3 left-3" />
       </body>
     </html>
   );

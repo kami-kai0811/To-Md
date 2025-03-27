@@ -1,14 +1,12 @@
 import type { LinkCardProps } from "@/types/link-cart-props";
-import { useEffect, useState } from "react";
-import { useMarkdown } from "@/context/markdown-context";
+import { useState } from "react";
 import { useUrl } from "@/context/url-context";
 import { LoaderCircle, Send } from "lucide-react";
 
-import { LinkCard } from "./link-card";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
+import { LinkCard } from "./embed-link-card";
 
 export function EmbedBlockContent() {
-  const { markdown, setMarkdown } = useMarkdown();
   // const [inputUrl, setInputUrl] = useState<string>("");
   const { url, setUrl } = useUrl();
   const [link, setLink] = useState<string>("");
@@ -48,10 +46,6 @@ export function EmbedBlockContent() {
     }
     setIsloading(false);
   }
-
-  useEffect(() => {
-    setMarkdown(`${markdown}\n ${link}`);
-  }, [link]);
 
   return (
     <>

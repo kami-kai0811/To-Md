@@ -1,10 +1,10 @@
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronDown, Copy } from "lucide-react";
+import { ChevronDown, ChevronUp, Copy } from "lucide-react";
 import { toast } from "sonner";
 
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export function MenuCard({
   markdown,
@@ -70,6 +70,7 @@ export function MenuCard({
             setIsCard(!isCard);
           }}
         >
+          <ChevronUp />
           メニュー
         </Button>
       )}
