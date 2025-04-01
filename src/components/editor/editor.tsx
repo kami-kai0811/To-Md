@@ -9,7 +9,8 @@ import { insertEmbed } from "../embed-link-block/insert-embed";
 import { MenuCard } from "./card";
 
 import "@blocknote/mantine/style.css";
-import "./style.css";
+
+// import "./style.css";
 
 import { useState } from "react";
 import { schema } from "@/config/block-schema";
@@ -140,7 +141,7 @@ export function Editor() {
   // Renders the editor instance, and its contents as Markdown below.
   return (
     <>
-      <div className="text-primary/70 my-2 flex flex-col text-center">
+      <div className="my-2 flex flex-col text-center text-[#cfcfcf]">
         <small>※マークダウン表示は編集できません。</small>
         <small>※タイトルはマークダウン表示されません。</small>
       </div>
@@ -152,11 +153,13 @@ export function Editor() {
         }}
       >
         <div className="flex flex-col gap-3 pt-5">
-          <div className="text-center text-2xl font-bold">編集エリア</div>
+          <div className="text-center text-2xl font-bold text-white">
+            編集エリア
+          </div>
 
           <TextareaAutosize
             placeholder="ここにタイトルを入力"
-            className="mx-auto w-10/12 resize-none py-5 text-center text-2xl focus:outline-none"
+            className="mx-auto w-10/12 resize-none py-5 text-center text-2xl text-[#cfcfcf] focus:outline-none"
             onChange={(e) => {
               setTitile(e.target.value);
             }}
@@ -186,22 +189,22 @@ export function Editor() {
           </div>
         </div>
 
-        {markdownDisplay && <div className="bg-primary/30 h-full w-full" />}
+        {markdownDisplay && <div className="h-full w-full bg-[#cfcfcf]" />}
 
         {markdownDisplay && (
           <div className="mx-auto flex max-w-10/12 flex-col gap-3 pt-5">
             <div className="relative flex items-center justify-center">
-              <h2 className="w-full text-center text-2xl font-bold">
+              <h2 className="w-full text-center text-2xl font-bold text-white">
                 マークダウン表示
               </h2>
             </div>
             <div
-              className={`placeholder:タイトル decorat mx-auto my-3.5 inline-block px-2 text-center text-2xl font-bold underline decoration-black decoration-2 underline-offset-5`}
+              className={`placeholder:タイトル decorat mx-auto my-3.5 inline-block px-2 text-center text-2xl font-bold text-[#cfcfcf] underline decoration-[#cfcfcf] decoration-2 underline-offset-5`}
             >
               {title || <span className="opacity-40">タイトル</span>}
             </div>
             <div className={"item bordered"}>
-              <pre className="break-all whitespace-pre-wrap">
+              <pre className="break-all whitespace-pre-wrap text-[#cfcfcf]">
                 <code>{markdown}</code>
               </pre>
             </div>

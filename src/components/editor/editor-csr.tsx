@@ -8,7 +8,7 @@ const Editor = dynamic(() => import("./editor").then((mod) => mod.Editor), {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center pb-20">
         <div className="h-16 w-16 animate-spin rounded-full border-t-4 border-orange-500" />
-        <p>Loading ... </p>
+        <p className="mt-5 text-white">Loading ... </p>
       </div>
     );
   },
