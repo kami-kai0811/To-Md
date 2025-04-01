@@ -26,7 +26,7 @@ import TextareaAutosize from "react-textarea-autosize";
 export function Editor() {
   // Stores the editor's contents as Markdown.
   const [markdown, setMarkdown] = useState<string>("");
-  const { url } = useUrl();
+  const { urls } = useUrl();
   const [title, setTitile] = useState<string>("");
   const [markdownDisplay, setmarkdownDisplay] = useState<boolean>(true);
   const locale = locales.ja;
@@ -63,7 +63,8 @@ export function Editor() {
       switch (block.type) {
         case "embed":
           listNum = 0;
-          markdown += `\n${url}\n`;
+          const embedUrl = urls[block.id] ?? ""; // ← context から取得
+          markdown += `\n${embedUrl}\n`;
           break;
 
         case "numberedListItem":

@@ -9,6 +9,6 @@ export const EmbedBlock = createReactBlockSpec(
     propSchema: { url: { default: "" } },
   },
   {
-    render: () => <EmbedBlockContent />,
+    render: ({ block }) => <EmbedBlockContent block={block} />,
   },
 );

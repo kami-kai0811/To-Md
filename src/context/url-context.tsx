@@ -1,18 +1,26 @@
-import type { ReactNode } from "react";
 import { createContext, useContext, useState } from "react";
 
+type UrlMap = Record<string, string>;
+
 type UrlContextType = {
-  url: string;
-  setUrl: (value: string) => void;
+  urls: UrlMap;
+  setUrl: (blockId: string, url: string) => void;
 };
 
 const UrlContext = createContext<UrlContextType | undefined>(undefined);
 
-export function UrlProvider({ children }: { children: ReactNode }) {
-  const [url, setUrl] = useState<string>("");
+export function UrlProvider({ children }: { children: React.ReactNode }) {
+  const [urls, setUrls] = useState<UrlMap>({});
+
+  function setUrl(blockId: string, url: string) {
+    setUrls((prev) => ({
+      ...prev,
+      [blockId]: url,
+    }));
+  }
 
   return (
-    <UrlContext.Provider value={{ url, setUrl }}>
+    <UrlContext.Provider value={{ urls, setUrl }}>
       {children}
     </UrlContext.Provider>
   );
@@ -20,6 +28,8 @@ export function UrlProvider({ children }: { children: ReactNode }) {
 
 export function useUrl() {
   const context = useContext(UrlContext);
-  if (!context) throw new Error("useUrlはUrlProvider内で使用してください");
+  if (!context) {
+    throw new Error("useUrl must be used within a UrlProvider");
+  }
   return context;
 }

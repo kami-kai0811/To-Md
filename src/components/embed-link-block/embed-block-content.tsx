@@ -6,9 +6,9 @@ import { LoaderCircle, Send } from "lucide-react";
 import { Button } from "../ui/button";
 import { LinkCard } from "./embed-link-card";
 
-export function EmbedBlockContent() {
-  // const [inputUrl, setInputUrl] = useState<string>("");
-  const { url, setUrl } = useUrl();
+export function EmbedBlockContent({ block }: { block: { id: string } }) {
+  const { urls, setUrl } = useUrl();
+
   const [link, setLink] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [meta, setMeta] = useState<LinkCardProps>({
@@ -16,24 +16,30 @@ export function EmbedBlockContent() {
     description: "",
     image: {},
   });
-  const [isLoading, setIsloading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const inputUrl = urls[block.id] || ""; // このブロック専用のURLを取得
 
   async function onClick() {
-    setIsloading(true);
+    setIsLoading(true);
     try {
       setError(null);
+
       const res = await fetch("/api/embed", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: url }),
+        body: JSON.stringify({ url: inputUrl }), // ← ブロックごとのURLだけを送信
       });
+
       if (!res.ok) {
         throw new Error(res.statusText);
       }
+
       const { link, meta } = (await res.json()) as {
         link: string;
         meta: LinkCardProps;
       };
+
       setLink(link);
       setMeta(meta);
     } catch (err: unknown) {
@@ -44,7 +50,7 @@ export function EmbedBlockContent() {
       }
       setError(message);
     }
-    setIsloading(false);
+    setIsLoading(false);
   }
 
   return (
@@ -56,8 +62,9 @@ export function EmbedBlockContent() {
           <input
             type="text"
             className="rounded-md border border-gray-500 p-2"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            value={inputUrl}
+            onChange={(e) => setUrl(block.id, e.target.value)} // block.idで個別管理
+            placeholder="URLを入力"
           />
           {error && <p className="text-sm text-red-500">{error}</p>}
           <Button className="cursor-pointer" onClick={onClick}>
