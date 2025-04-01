@@ -55,13 +55,14 @@ export function EmbedBlockContent() {
         <div className="flex w-full flex-col gap-2 rounded border bg-white p-4 shadow">
           <input
             type="text"
-            className="border-accent-foreground rounded-md border p-2"
+            className="rounded-md border border-gray-500 p-2"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
           {error && <p className="text-sm text-red-500">{error}</p>}
           <Button className="cursor-pointer" onClick={onClick}>
             {isLoading && <LoaderCircle className="animate-spin" />}
+            埋め込む
             <Send />
           </Button>
         </div>

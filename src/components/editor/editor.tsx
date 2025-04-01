@@ -9,6 +9,7 @@ import { insertEmbed } from "../embed-link-block/insert-embed";
 import { MenuCard } from "./card";
 
 import "@blocknote/mantine/style.css";
+import "./style.css";
 
 import { useState } from "react";
 import { schema } from "@/config/block-schema";

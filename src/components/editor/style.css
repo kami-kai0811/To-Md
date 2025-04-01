@@ -1,0 +1,17 @@
+.bn-container * {
+  background-color: white;
+}
+
+.bn-editor * {
+  color: black;
+}
+
+.bn-suggestion-menu * {
+  color: white;
+  background-color: black;
+}
+
+.bn-suggestion-menu-item[aria-selected="true"],
+.bn-suggestion-menu-item:hover {
+  background-color: #474343 !important;
+}
